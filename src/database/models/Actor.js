@@ -10,15 +10,45 @@ module.exports = (sequelize, dataTypes) => {
         // updated_at: dataTypes.TIMESTAMP,
         first_name: {
             type: dataTypes.STRING(100),
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notNull: {
+                    args: true,
+                    msg: "The field first name can't be null"
+                },
+                notEmpty: {
+                    args: true,
+                    msg: "Please, write the actor's name"
+                }
+            }
         },
         last_name: {
             type: dataTypes.STRING(100),
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notNull: {
+                    args: true,
+                    msg: "The field last name can't be null"
+                },
+                notEmpty: {
+                    args: true,
+                    msg: "Please, write the actor's lastname"
+                }
+            }
         },
         rating: {
             type: dataTypes.DECIMAL(3,1),
-            allowNull: false
+            allowNull: false,
+            validate: {
+                notNull: {
+                    args: true,
+                    msg: "The field rating can't be null"
+                },
+                notEmpty: {
+                    args: true,
+                    msg: "Please, write the actor's rating"
+                }
+            }
         },
         favorite_movie_id: dataTypes.BIGINT(10).UNSIGNED
     };
